@@ -1,21 +1,15 @@
-const Dev = require('../models/Dev')
+const DislikeService = require('../services/DislikeService')
 
 module.exports = {
     async create(req, res) {
         const { devId } = req.params
         const { user } = req.headers
 
-        const loggedDev = await Dev.findById(user)
-        const targetDev = await Dev.findById(devId)
-
-        if (!targetDev) {
-            return res.status(404).json({ error: 'Dev not found' })
+        try {
+            const loggedDev = await DislikeService.create(user, devId)
+            return res.status(200).json(loggedDev)
+        } catch (err) {
+            return res.status(404).json({ msg: err.message })
         }
-
-        loggedDev.dislikes.push(targetDev._id)
-
-        await loggedDev.save()
-
-        return res.status(200).json(loggedDev)
     }
 }
