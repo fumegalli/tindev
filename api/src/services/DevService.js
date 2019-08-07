@@ -6,7 +6,7 @@ module.exports = {
         const userExists = await Dev.findOne({ user: username })
 
         if (userExists) {
-            throw new Error('Dev already exists')
+            return userExists
         }
 
         const response = await axios.get(

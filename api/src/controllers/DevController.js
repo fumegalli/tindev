@@ -4,12 +4,9 @@ module.exports = {
     async create(req, res) {
         const { username } = req.body
 
-        try {
-            const dev = await DevService.create(username)
-            return res.status(201).json(dev)
-        } catch (err) {
-            return res.status(400).json({ msg: err.message })
-        }
+        const dev = await DevService.create(username)
+
+        return res.status(201).json(dev)
     },
 
     async index(req, res) {
