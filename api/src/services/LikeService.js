@@ -16,5 +16,5 @@ module.exports = {
         loggedDev.likes.push(targetDev._id)
 
         return loggedDev.save()
-    }
+    },
 }

@@ -12,5 +12,5 @@ module.exports = {
         loggedDev.dislikes.push(targetDev._id)
 
         return loggedDev.save()
-    }
+    },
 }

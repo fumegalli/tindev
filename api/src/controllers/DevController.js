@@ -15,5 +15,5 @@ module.exports = {
         const users = await DevService.index(user)
 
         return res.status(200).json(users)
-    }
+    },
 }

@@ -19,7 +19,7 @@ module.exports = {
             name,
             user: username,
             bio,
-            avatar
+            avatar,
         })
     },
 
@@ -32,8 +32,8 @@ module.exports = {
             $and: [
                 { _id: { $ne: loggedDevId } },
                 { _id: { $nin: likes } },
-                { _id: { $nin: dislikes } }
-            ]
+                { _id: { $nin: dislikes } },
+            ],
         })
-    }
+    },
 }
