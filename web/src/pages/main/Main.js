@@ -4,9 +4,7 @@ import { Link } from 'react-router-dom'
 import './Main.css'
 import api from '../../services/api'
 
-import logo from '../../assets/logo.svg'
-import dislike from '../../assets/dislike.svg'
-import like from '../../assets/like.svg'
+import { logo, dislike, like } from '../../assets'
 
 export default function Main({ match }) {
     const [users, setUsers] = useState([])
