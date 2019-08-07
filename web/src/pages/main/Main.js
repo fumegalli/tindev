@@ -15,7 +15,7 @@ export default function Main({ match }) {
     useEffect(() => {
         async function loadUsers() {
             const response = await api.get('/devs', {
-                headers: { user: loggedUserId }
+                headers: { user: loggedUserId },
             })
 
             setUsers(response.data)
@@ -26,7 +26,7 @@ export default function Main({ match }) {
 
     async function handleDislike(id) {
         await api.post(`/devs/${id}/dislikes`, null, {
-            headers: { user: loggedUserId }
+            headers: { user: loggedUserId },
         })
 
         setUsers(users.filter(user => user._id !== id))
@@ -34,7 +34,7 @@ export default function Main({ match }) {
 
     async function handleLike(id) {
         await api.post(`/devs/${id}/likes`, null, {
-            headers: { user: loggedUserId }
+            headers: { user: loggedUserId },
         })
 
         setUsers(users.filter(user => user._id !== id))
@@ -49,14 +49,15 @@ export default function Main({ match }) {
                     <p> {user.bio} </p>
                 </footer>
 
-                <div className="buttons">
+                <div className='buttons'>
                     <button
-                        type="button"
-                        onClick={() => handleDislike(user._id)}>
-                        <img src={dislike} alt="dislike" />
+                        type='button'
+                        onClick={() => handleDislike(user._id)}
+                    >
+                        <img src={dislike} alt='dislike' />
                     </button>
-                    <button type="button" onClick={() => handleLike(user._id)}>
-                        <img src={like} alt="like" />
+                    <button type='button' onClick={() => handleLike(user._id)}>
+                        <img src={like} alt='like' />
                     </button>
                 </div>
             </li>
@@ -64,14 +65,14 @@ export default function Main({ match }) {
     }
 
     return (
-        <div className="main-container">
-            <Link to="/">
-                <img src={logo} alt="Tindev" />
+        <div className='main-container'>
+            <Link to='/'>
+                <img src={logo} alt='Tindev' />
             </Link>
             {users.length > 0 ? (
                 <ul>{renderUsers()}</ul>
             ) : (
-                <div className="empty"> Acabou :( </div>
+                <div className='empty'> Acabou :( </div>
             )}
         </div>
     )

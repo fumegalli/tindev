@@ -10,9 +10,7 @@ export default function Login({ history }) {
     async function handleSubmit(e) {
         e.preventDefault()
 
-        const response = await api.post('/devs', {
-            username
-        })
+        const response = await api.post('/devs', { username })
 
         const { _id } = response.data
 
@@ -20,15 +18,15 @@ export default function Login({ history }) {
     }
 
     return (
-        <div className="login-container">
+        <div className='login-container'>
             <form onSubmit={handleSubmit}>
-                <img src={logo} alt="Tindev" />
+                <img src={logo} alt='Tindev' />
                 <input
-                    placeholder="Digite seu usuário no Github"
+                    placeholder='Digite seu usuário no Github'
                     value={username}
                     onChange={e => setUsername(e.target.value)}
                 />
-                <button type="submit"> Entrar </button>
+                <button type='submit'> Entrar </button>
             </form>
         </div>
     )
