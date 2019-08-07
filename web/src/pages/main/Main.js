@@ -10,22 +10,23 @@ import like from '../../assets/like.svg'
 
 export default function Main({ match }) {
     const [users, setUsers] = useState([])
+    const { id: loggedUserId } = match.params
 
     useEffect(() => {
         async function loadUsers() {
             const response = await api.get('/devs', {
-                headers: { user: match.params.id }
+                headers: { user: loggedUserId }
             })
 
             setUsers(response.data)
         }
 
         loadUsers()
-    }, [match.params.id])
+    }, [loggedUserId])
 
     async function handleDislike(id) {
         await api.post(`/devs/${id}/dislikes`, null, {
-            headers: { user: match.params.id }
+            headers: { user: loggedUserId }
         })
 
         setUsers(users.filter(user => user._id !== id))
@@ -33,7 +34,7 @@ export default function Main({ match }) {
 
     async function handleLike(id) {
         await api.post(`/devs/${id}/likes`, null, {
-            headers: { user: match.params.id }
+            headers: { user: loggedUserId }
         })
 
         setUsers(users.filter(user => user._id !== id))
