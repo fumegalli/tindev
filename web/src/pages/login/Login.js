@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import logo from '../../assets/logo.svg'
+import { logo } from '../../assets'
 import './Login.css'
 import api from '../../services/api'
 
@@ -24,6 +24,7 @@ export default function Login({ history }) {
                 <input
                     placeholder='Digite seu usuário no Github'
                     value={username}
+                    required
                     onChange={e => setUsername(e.target.value)}
                 />
                 <button type='submit'> Entrar </button>
