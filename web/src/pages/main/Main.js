@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import io from 'socket.io-client'
 
 import './Main.css'
 import api from '../../services/api'
@@ -20,6 +21,16 @@ export default function Main({ match }) {
         }
 
         loadUsers()
+    }, [loggedUserId])
+
+    useEffect(() => {
+        const socket = io('http://localhost:3333', {
+            query: { user: loggedUserId },
+        })
+
+        socket.on('match', dev => {
+            console.log(dev)
+        })
     }, [loggedUserId])
 
     async function handleDislike(id) {
