@@ -7,6 +7,8 @@ import api from '../../services/api'
 
 import { logo, dislike, like, itsAMatch } from '../../assets'
 
+const API_URL = 'http://localhost:3333'
+
 export default function Main({ match }) {
     const [users, setUsers] = useState([])
     const [matchDev, setMatchDev] = useState(null)
@@ -26,7 +28,7 @@ export default function Main({ match }) {
     }, [loggedUserId])
 
     useEffect(() => {
-        const socket = io('http://localhost:3333', {
+        const socket = io(API_URL, {
             query: { user: loggedUserId },
         })
 
