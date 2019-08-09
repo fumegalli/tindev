@@ -6,6 +6,7 @@ import {
     Image,
     TextInput,
     TouchableOpacity,
+    ScrollView,
     Platform,
 } from 'react-native'
 
@@ -38,20 +39,22 @@ export default function Login({ navigation }) {
             behavior='padding'
             enabled={IS_IOS_DEVICE}
         >
-            <Image source={logo} />
+            <ScrollView contentContainerStyle={styles.content}>
+                <Image source={logo} />
 
-            <TextInput
-                style={styles.input}
-                autoCapitalize='none'
-                autoCorrect={false}
-                placeholder='Digite seu usuário no Github'
-                value={username}
-                onChangeText={setUsername}
-            />
+                <TextInput
+                    style={styles.input}
+                    autoCapitalize='none'
+                    autoCorrect={false}
+                    placeholder='Digite seu usuário no Github'
+                    value={username}
+                    onChangeText={setUsername}
+                />
 
-            <TouchableOpacity style={styles.button} onPress={handleLogin}>
-                <Text style={styles.buttonText}>Enviar</Text>
-            </TouchableOpacity>
+                <TouchableOpacity style={styles.button} onPress={handleLogin}>
+                    <Text style={styles.buttonText}>Enviar</Text>
+                </TouchableOpacity>
+            </ScrollView>
         </KeyboardAvoidingView>
     )
 }
