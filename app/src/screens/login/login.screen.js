@@ -3,7 +3,6 @@ import AsyncStorage from '@react-native-community/async-storage'
 import {
     KeyboardAvoidingView,
     Text,
-    StyleSheet,
     Image,
     TextInput,
     TouchableOpacity,
@@ -12,10 +11,10 @@ import {
 
 import { logo } from '../../assets'
 import { DevService } from '../../services/dev'
+import styles from './login.style'
 
 const IS_IOS_DEVICE = Platform.OS === 'ios'
 
-//TODO: Add <ScrollView keyboardShouldPersistTaps=“handled”>
 export default function Login({ navigation }) {
     const [username, setUsername] = useState('')
 
@@ -56,40 +55,3 @@ export default function Login({ navigation }) {
         </KeyboardAvoidingView>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#f5f5f5',
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 30,
-    },
-
-    input: {
-        height: 46,
-        alignSelf: 'stretch',
-        backgroundColor: '#fff',
-        borderWidth: 1,
-        borderRadius: 4,
-        borderColor: '#ddd',
-        marginTop: 20,
-        paddingHorizontal: 15,
-    },
-
-    button: {
-        height: 46,
-        alignSelf: 'stretch',
-        backgroundColor: '#DF4723',
-        borderRadius: 4,
-        marginTop: 10,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-
-    buttonText: {
-        color: '#FFF',
-        fontWeight: 'bold',
-        fontSize: 16,
-    },
-})
