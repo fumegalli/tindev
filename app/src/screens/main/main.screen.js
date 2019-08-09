@@ -29,8 +29,6 @@ export default function Main({ navigation }) {
 
     async function handleLike() {
         const [{ _id: userIdToLike }, ...rest] = users
-        console.log(userIdToLike)
-        console.log(id)
 
         await DevService.like(id, userIdToLike)
 
