@@ -80,18 +80,15 @@ export default function Main({ navigation }) {
     function renderMatch() {
         return (
             <View style={[styles.matchContainer, { zIndex: users.length }]}>
-                <Image source={itsAMatch} />
+                <Image style={styles.imageMatch} source={itsAMatch} />
                 <Image
                     style={styles.avatarMatch}
                     source={{ uri: matchDev.avatar }}
                 />
                 <Text style={styles.nameMatch}>{matchDev.name}</Text>
                 <Text style={styles.bioMatch}>{matchDev.bio}</Text>
-                <TouchableOpacity
-                    style={styles.closeButton}
-                    onPress={() => setMatchDev(null)}
-                >
-                    <Text style={styles.buttonText}>Fechar</Text>
+                <TouchableOpacity onPress={() => setMatchDev(null)}>
+                    <Text style={styles.closeMatch}>Fechar</Text>
                 </TouchableOpacity>
             </View>
         )
