@@ -85,6 +85,51 @@ const styles = StyleSheet.create({
         fontSize: 24,
         fontWeight: 'bold',
     },
+
+    matchContainer: {
+        position: 'absolute',
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+        elevation: 3,
+    },
+
+    avatarMatch: {
+        width: 200,
+        height: 200,
+        borderRadius: 50,
+        borderWidth: 3,
+        borderColor: '#fff',
+        marginVertical: 30,
+    },
+
+    nameMatch: {
+        fontSize: 32,
+        color: '#fff',
+        fontWeight: 'bold',
+    },
+
+    bioMatch: {
+        marginTop: 10,
+        fontSize: 20,
+        lineHeight: 30,
+        maxWidth: 400,
+        color: 'rgba(255, 255, 255, 0.8)',
+    },
+
+    closeButton: {
+        marginTop: 30,
+    },
+
+    buttonText: {
+        fontWeight: 'bold',
+        color: 'rgba(255, 255, 255, 0.8)',
+        fontSize: 18,
+    },
 })
 
 export default styles
