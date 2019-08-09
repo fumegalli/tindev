@@ -5,10 +5,12 @@ import io from 'socket.io-client'
 import './Main.css'
 import api from '../../services/api'
 
-import { logo, dislike, like } from '../../assets'
+import { logo, dislike, like, itsAMatch } from '../../assets'
 
 export default function Main({ match }) {
     const [users, setUsers] = useState([])
+    const [matchDev, setMatchDev] = useState(null)
+
     const { id: loggedUserId } = match.params
 
     useEffect(() => {
@@ -29,7 +31,7 @@ export default function Main({ match }) {
         })
 
         socket.on('match', dev => {
-            console.log(dev)
+            setMatchDev(dev)
         })
     }, [loggedUserId])
 
@@ -73,6 +75,20 @@ export default function Main({ match }) {
         ))
     }
 
+    function renderMatch() {
+        return (
+            <div className='match-container'>
+                <img src={itsAMatch} alt='It"s a match' />
+                <img className='avatar' src={matchDev.avatar} alt='' />
+                <strong> {matchDev.name} </strong>
+                <p>{matchDev.bio}</p>
+                <button type='button' onClick={() => setMatchDev(null)}>
+                    FECHAR
+                </button>
+            </div>
+        )
+    }
+
     return (
         <div className='main-container'>
             <Link to='/'>
@@ -83,6 +99,8 @@ export default function Main({ match }) {
             ) : (
                 <div className='empty'> Acabou :( </div>
             )}
+
+            {matchDev && renderMatch()}
         </div>
     )
 }
